@@ -9,8 +9,9 @@ FacePlusPlus::FacePlusPlus(QObject *parent) : QObject(parent) {
 }
 
 void FacePlusPlus::PostAnswer(QNetworkReply* reply) {
+  QJsonDocument json;
   QByteArray data = reply->readAll();
-  qDebug() << data;
+  qDebug() << "Raw data:" << data;
 }
 
 void FacePlusPlus::RequestData() {
@@ -20,12 +21,12 @@ void FacePlusPlus::RequestData() {
 
   QHttpPart imagePart;
   QImage image;
-  image.load("/home/ye/test.png");
+  image.load("D:\\Pictures\\test.jpg");
   QByteArray byteArray;
   QBuffer buffer(&byteArray);
   buffer.open(QIODevice::ReadWrite);
-  image.save(&buffer, "PNG");
-  imagePart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("image/png"));
+  image.save(&buffer, "jpg");
+  imagePart.setHeader(QNetworkRequest::ContentTypeHeader, QVariant("image/jpg"));
   imagePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"image_file\"; filename=\" \""));
   imagePart.setBody(byteArray);
 

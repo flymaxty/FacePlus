@@ -1,9 +1,10 @@
-QT += qml quick network
+QT += qml quick network multimedia
 
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    faceplusplus.cpp
+  faceplusplus.cpp \
+  faceplusplus_filter.cpp
 
 RESOURCES += qml.qrc
 
@@ -30,4 +31,29 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    faceplusplus.h
+  faceplusplus.h \
+  faceplusplus_filter.h
+
+
+#INCLUDEPATH += \
+#  $$(OPENCV_DIR)/include
+
+#LIBS += \
+#  -L$$(OPENCV_DIR)/$${QMAKE_TARGET.arch}/vc14/lib \
+#  -lopencv_ml320 \
+#  -lopencv_objdetect320 \
+#  -lopencv_calib3d320 \
+#  -lopencv_video320 \
+#  -lopencv_features2d320 \
+#  -lopencv_highgui320 \
+#  -lopencv_flann320 \
+#  -lopencv_imgproc320 \
+#  -lopencv_core320 \
+#  -lopencv_imgcodecs320 \
+#  -lopencv_photo320 \
+#  -lopencv_shape320 \
+#  -lopencv_stitching320 \
+#  -lopencv_superres320 \
+#  -lopencv_videoio320 \
+#  -lopencv_videostab320 \
+#  -lopencv_face320 \
